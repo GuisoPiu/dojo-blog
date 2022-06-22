@@ -1,17 +1,25 @@
 <template>
   <div class="home">
-    No sirve
+    My name is {{ name }} and my age is {{ age }}
+    <button @click="handleClick">click me</button>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   name: 'HomeView',
-  components: {
-    HelloWorld
+  components: {},
+  setup() {
+    let name = 'mario'
+    let age = 30
+
+    const handleClick = () => {
+      console.log('you clicked me')
+    }
+
+    return { name, age, handleClick }
   }
 }
 </script>
