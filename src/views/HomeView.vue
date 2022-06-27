@@ -1,15 +1,18 @@
 <template>
   <div class="home">
-    <p ref="p">My name is {{ name }} and my age is {{ age }}</p>  
-    <button @click="handleClick">click me</button>
-    <button @click="age++">add 1 to age</button>
-    <input type="text" v-model="name">
+    <h1>Home</h1> 
+    <h2>Refs</h2>
+    <p>{{ ninjaOne.name }} - {{ ninjaOne.age }}</p>
+    <button @click="updateNinjaOne">click me</button>
+    <h2>Reactive</h2>
+    <p>{{ ninjaTwo.name }} - {{ ninjaTwo.age }}</p>
+    <button @click="updateNinjaTwo">click me</button>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 
 export default {
   name: 'HomeView',
@@ -17,15 +20,19 @@ export default {
   setup() {
     // const p = ref(null)
     
-    const name = ref('mario')
-    const age = ref(30)
+    const ninjaOne = ref({name: 'mario', age: 30 })
+    const ninjaTwo = reactive({name: 'luigi', age: 40 })
 
-    const handleClick = () => {
-      name.value = 'luigi'
-      age.value = 35
+    const updateNinjaOne = () => { 
+      ninjaOne.value.age = 35
     }
 
-    return { name, age, handleClick }
+    const updateNinjaTwo = () => { 
+      ninjaTwo.name = 'Rios',
+      ninjaTwo.age = 55
+     }
+
+    return { name, ninjaOne, ninjaTwo, updateNinjaOne, updateNinjaTwo }
   }
 }
 </script>
