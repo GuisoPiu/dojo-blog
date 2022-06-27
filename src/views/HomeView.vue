@@ -21,6 +21,7 @@ export default {
     // const p = ref(null)
     
     const ninjaOne = ref({name: 'mario', age: 30 })
+    // reactive cannot use primitives
     const ninjaTwo = reactive({name: 'luigi', age: 40 })
 
     const updateNinjaOne = () => { 
