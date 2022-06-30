@@ -31,7 +31,7 @@ export default {
     const updateNinjaTwo = () => { 
       ninjaTwo.name = 'Rios',
       ninjaTwo.age = 55
-     }
+    }
 
     return { name, ninjaOne, ninjaTwo, updateNinjaOne, updateNinjaTwo }
   }
