@@ -1,40 +1,24 @@
 <template>
   <div class="home">
     <h1>Home</h1> 
-    <input type="text" v-model="search">
-    <p>Search term - {{ search }}</p>
-    <div v-for="name in matchingNames" :key="name">{{ name }}</div> 
-    <button @click="handleClick">stop watch</button>
+    <PostList :posts="posts" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import { computed, ref, watch, watchEffect } from 'vue'
+import PostList from '../components/PostList.vue'
+import { ref } from 'vue'
 
 export default {
   name: 'HomeView',
-  components: {},
+  components: { PostList },
   setup() {
-    const search = ref('')
-    const names = ref(['hector', 'carlos', 'macario', 'roberot', 'irma','julio'])
-
-    const stopWatch = watch(search, () => {
-      console.log('input changes')
-    })
-    const stopEffect = watchEffect(() => {
-      console.log('wathcEffect function ran', search.value)
-    })
-
-    const handleClick = () => {
-      stopWatch()
-      stopEffect()
-    }
-
-    const matchingNames = computed(() => {
-      return names.value.filter((name) => name.includes(search.value))
-    })
-    return { names, search, matchingNames, handleClick }
+    const posts = ref([
+      { title: 'welcome to the blog', body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', id: 1 },
+      { title: 'top 5 css tips', body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', id: 2 }
+    ])
+    return { posts }
   }
 }
 </script>
