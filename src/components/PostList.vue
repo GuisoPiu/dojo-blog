@@ -13,10 +13,10 @@ export default {
     props: ["posts"],
     components: { SinglePost },    
     setup(props) {
-        onMounted(() => console.log('component mounted'))
-        onUnmounted(() => console.log('component unmounted'))
-        onUpdated(() => console.log('component updated'))
-    }
+       onMounted(() => console.log('component mounted'))
+       onUnmounted(() => console.log('component Unmounted'))
+       onUpdated(() => console.log('component Updated'))
+    },
 }
 </script>
 
